@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 
 const { TestConnection } = require("./database/db");
 
@@ -11,12 +11,8 @@ const app = express();
 app.use(morgan("dev")); //temrinal logs
 app.use(cors({ origin: true, credentials: true }));
 
-app.get("/", (req, res) => {
-  res.send("Bolaaaaaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhh");
-});
-
-app.get("/wizzywazzy", async (req, res) => {
-  return res.status(200).send("sadfjasjndf");
+app.get("/prueba", async (req, res) => {
+  return res.status(200).send("La prueba funciona");
 });
 
 //test de conexión

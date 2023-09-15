@@ -2,17 +2,18 @@ const fs = require("fs");
 const path = require("path");
 const { Sequelize } = require("sequelize");
 
-const basename = path.basename(__filename); // nombre del archivo actual
+const dbname = process.env.DB_NAME;
+const dbuser = process.env.DB_USER;
+const dbpass = process.env.DB_PASS;
+const dbhost = process.env.DB_HOST;
+const dbdialect = process.env.DB_DIALECT;
 
-const db = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
-  {
-    host: "localhost",
-    dialect: "mysql",
-  }
-);
+const db = new Sequelize(dbname, dbuser, dbpass, {
+  host: dbhost,
+  dialect: dbdialect,
+});
+
+const basename = path.basename(__filename); // nombre del archivo actual
 
 fs.readdirSync(__dirname)
   .filter((file) => {
